@@ -1,7 +1,13 @@
 FROM nginx:latest
 
-# Copia a configuracao do servidor
-COPY default.conf /etc/nginx/conf.d
+RUN apt-get update -y && \
+    apt-get upgrade -y && \
+    apt-get install -y dnsutils
 
-# Copia a pagina personalizada para a imagem do servidor
-COPY index.html /usr/share/nginx/html
+COPY default.conf /etc/nginx/conf.d/default.conf
+
+COPY ./certificate.crt /etc/ssl/certs
+COPY ./key.key /etc/ssl/private
+
+RUN chown -R root:root /etc/ssl/private
+RUN chmod -R 600 /etc/ssl/private

@@ -1,0 +1,16 @@
+;
+; BIND data file for ifrn.asa.br
+;
+$TTL 604801
+@   IN  SOA	ns.ifrn.asa.br. root.ifrn.asa.br. (
+            20240903  ; Serial
+            604800    ; Refresh
+            86400     ; Retry
+            2419200   ; Expire
+            604800 )  ; Negative Cache TTL
+;
+@       IN  NS      ns.ifrn.asa.br.
+@       IN  A       192.168.1.68
+ns      IN  A       192.168.1.68
+jc		IN  A       192.168.1.68
+www     IN  CNAME   ns
