@@ -3,7 +3,7 @@
 ;
 $TTL 604801
 @   IN  SOA	ns.ifrn.asa.br. root.ifrn.asa.br. (
-            20240903  ; Serial
+            20240904  ; Serial
             604800    ; Refresh
             86400     ; Retry
             2419200   ; Expire
