@@ -1,9 +1,7 @@
 #!/bin/bash
 
-# Inicia os serviços
-service syslog-ng start
-service postfix start
-service dovecot start
+useradd -c 'matheus' -m -s /bin/false matheus
+echo "matheus:123456"|chpasswd
 
-# Mantém o contêiner ativo
-tail -F /var/log/mail.log
+useradd -c 'sales' -m -s /bin/false sales
+echo "sales:123456"|chpasswd
