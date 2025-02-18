@@ -1,5 +1,3 @@
-version: '3.8'
-
 services: 
   web:
     build:
@@ -19,18 +17,6 @@ services:
     ports:
       - "53:53/tcp"
       - "53:53/udp"
-    networks:
-      - asa-net
-
-  dns-jc:
-    build:
-      context: ./dns-jc
-      dockerfile: Dockerfile
-    image: dns-jc
-    container_name: dns-jc
-    ports:
-      - "1053:53/tcp"
-      - "1053:53/udp"
     networks:
       - asa-net
 
@@ -143,8 +129,8 @@ services:
 
   webmail:
     build: 
-        context: ./webmail
-        dockerfile: Dockerfile
+      context: ./webmail
+      dockerfile: Dockerfile
     image: webmail
     container_name: webmail
     restart: always
