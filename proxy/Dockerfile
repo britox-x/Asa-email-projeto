@@ -1,4 +1,4 @@
-# Use a imagem base do Nginx
+# Use uma imagem base do Nginx
 FROM nginx:latest
 
 # Instala pacotes necessários e copia os certificados

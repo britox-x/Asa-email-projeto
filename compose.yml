@@ -1,3 +1,5 @@
+version: '3.8'  # Versão do Docker Compose
+
 services: 
   web:
     build:
@@ -96,12 +98,12 @@ services:
     networks:
       - asa-net
 
-  postfix:
+  email:
     build:
-      context: ./postfix
+      context: ./email
       dockerfile: Dockerfile
-    image: postfix
-    container_name: postfix
+    image: email
+    container_name: email
     ports:
       - "25:25"
       - "143:143"
@@ -127,18 +129,6 @@ services:
     networks:
       - asa-net
 
-  webmail:
-    build: 
-      context: ./webmail
-      dockerfile: Dockerfile
-    image: webmail
-    container_name: webmail
-    restart: always
-    volumes:
-      - webmail:/var/www/html
-    networks:
-      - asa-net
-
   ssh:
     build:
       context: ./ssh
@@ -149,7 +139,7 @@ services:
       - "2222:22"
     networks:
       - asa-net
-
+      
 volumes:
   wordpress:
   db:
