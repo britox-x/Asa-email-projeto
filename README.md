@@ -9,7 +9,7 @@ O **Projeto Asa** é uma solução modular e robusta que utiliza Docker para con
 O Projeto Asa inclui uma variedade de serviços:
 
 - **Servidores DNS**: 
-  - Dois servidores configurados com BIND9 para a zona `ifrn.asa.br`, com delegação para o campus do IFRN João Câmara.
+  - Dois servidores configurados com BIND9 para as zonas `redinha.asa.br`, `maxaranguape.asa.br` e `camurupim.asa.br`, com delegação para o campus do IFRN João Câmara.
   
 - **Serviço de Webmail**: 
   - Facilita a comunicação através de e-mail.
@@ -18,10 +18,10 @@ O Projeto Asa inclui uma variedade de serviços:
   - Um servidor SMTP/IMAP para envio e recebimento de mensagens.
   
 - **Proxy de Segurança**: 
-  - Proporciona controle e segurança do tráfego.
+  - Proporciona controle e segurança do tráfego, configurado com Nginx para os hosts virtuais `web1.asa.br` e `web2.asa.br`.
   
 - **Hospedagem de Conteúdo**: 
-  - Dois servidores que utilizam WordPress para facilitar a criação e gestão de sites.
+  - Dois servidores que utilizam WordPress para facilitar a criação e gestão de sites (Web1 e Web2).
   
 - **Acesso Remoto**: 
   - Um servidor SSH que garante acesso seguro para gerenciamento de servidores.
