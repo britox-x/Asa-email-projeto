@@ -1,4 +1,4 @@
-version: '3.8'  # Versão do Docker Compose
+version:
 
 services: 
   web:
@@ -33,11 +33,13 @@ services:
       - "443:443"
     depends_on:
       - web
+      - webmail
       - wordpress
       - wordpress2
     networks:
       - asa-net
-
+    volumes: 
+      - ./proxy/certs:/etc/ssl/certs
   wordpress:
     image: wordpress
     container_name: wordpress
@@ -105,15 +107,13 @@ services:
     image: email
     container_name: email
     ports:
-      - "25:25"
-      - "143:143"
-      - "993:993"
-      - "110:110"
-      - "465:465"
-      - "587:587"
+      - "25:25/tcp"
+      - "587:587/tcp"
+      - "110:110/tcp"
+      - "143:143/tcp" 
     networks:
       - asa-net
-  
+
   db3:
     image: mariadb:10.6
     container_name: db3
@@ -139,7 +139,18 @@ services:
       - "2222:22"
     networks:
       - asa-net
-      
+
+  webmail:
+    build: 
+      context: ./webmail
+      dockerfile: Dockerfile
+    image: webmail
+    container_name: webmail
+    volumes:
+      - webmail:/var/www/html
+    networks:
+      - asa-net
+
 volumes:
   wordpress:
   db:
@@ -147,6 +158,7 @@ volumes:
   db2:
   webmail:
   db3:
+  roundcube_data:
 
 networks:
   asa-net:
